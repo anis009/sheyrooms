@@ -21,4 +21,14 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
+router.post("/", async (req, res) => {
+	try {
+		const room = new Room(req.body);
+		await room.save();
+		res.json(room);
+	} catch (err) {
+		console.log(err);
+		res.status(400).json({ message: err });
+	}
+});
 module.exports = router;

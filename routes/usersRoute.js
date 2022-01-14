@@ -36,4 +36,14 @@ router.post("/login", async (req, res) => {
 	}
 });
 
+router.get("/getallusers", async (req, res) => {
+	try {
+		const users = await User.find({});
+		console.log(users);
+		res.json({ users });
+	} catch (err) {
+		res.status(400).json({ message: "something went to wrong!" });
+	}
+});
+
 module.exports = router;
