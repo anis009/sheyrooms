@@ -6,11 +6,13 @@ const bookingSchema = mongoose.Schema(
 			required: true,
 		},
 		roomid: {
-			type: String,
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "rooms",
 			required: true,
 		},
 		userid: {
-			type: String,
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "users",
 			required: true,
 		},
 		fromdate: {

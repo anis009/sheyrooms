@@ -4,10 +4,13 @@ const Booking = require("../models/booking");
 
 router.get("/allbookings", async (req, res) => {
 	try {
-		const books = await Booking.find({});
+		const books = await Booking.find({})
+			.populate("userid", "name")
+			.sort({ createdAt: -1 });
 		res.json({ books });
 	} catch (err) {
-		res.status(400).json({ message: "something went to wrong!" });
+		console.log(err);
+		res.status(400).json({ message: err.message });
 	}
 });
 
